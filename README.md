@@ -1,6 +1,7 @@
 # Grupo-Pulmon-Lung
 Grupo Pulmón, Group of Lung 
 Members: Anghi, Rebeca, Mayra, Ana, Chen
+
 Planteamiento
 El hospital F5 lleva un tiempo recogiendo datos cruzados que relacionan diversos indicadores de la vida y estado de salud de algunos pacientes frente a la variable de si han sufrido un ictus o no lo han hecho.
 
