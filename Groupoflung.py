@@ -8,10 +8,7 @@ from pickle import dump
 from pickle import load
 
 
-pickle_in = open('XGBClassifier.pkl', 'rb') 
-classifier = pickle.load(pickle_in)
-pickle_transformer = open('transformer_entrenado.pkl', 'rb') 
-transformer = pickle.load(pickle_transformer)
+
 
 def main():
     st.title('Stroke Prediction by Team of Lung')
@@ -88,47 +85,16 @@ def main():
     button = st.button('Predict')
 
     if button:
-
-            risk = classifier.predict(input_df)
-            if risk == 0:
-                st.success("Congratulations! Low Risk of Stroke")
-            else:
-                st.error("Take care of yourself! High Risk of Stroke")
-            
-            precision, recall, f1, acc = st.columns(4)
-            st.markdown("""
-            <style>
-            div[data-testid="metric-container"] {
-            background-color: rgba(28, 131, 225, 0.1);
-            border: 1px solid rgba(28, 131, 225, 0.1);
-            padding: 5% 5% 5% 10%;
-            border-radius: 5px;
-            color: rgb(30, 103, 119);
-            overflow-wrap: break-word;
-            }
-
-            /* breakline for metric text         */
-            div[data-testid="metric-container"] > label[data-testid="stMetricLabel"] > div {
-            overflow-wrap: break-word;
-            white-space: break-spaces;
-            color: green;
-            font-size: 20px;
-            }
-            </style>
-            """
-            , unsafe_allow_html=True)
-
-            with precision:
-                st.metric(label="Precision Score", value="93%")
-            with recall:
-                st.metric(label="Recall Score", value="95%")
-            with f1:
-                st.metric(label="F1 Score", value="94%")
-            with acc:
-                st.metric(label="Accuracy Score", value="94%")
-
-
-        
+        st.write(input_df)
+        #pickle_transformer = open('transformer_entrenado.pkl', 'rb') 
+        carga_transformer = pickle.load(open('transformer_entrenado.pkl', 'rb'))
+        #pickle_in = open('XGBClassifier.pkl', 'rb') 
+        carga_modelo = pickle.load(open('XGBClassifier.pkl', 'rb'))
+        transformer = carga_transformer
+        modelo = carga_modelo
+        df = transformer.transform(input_df)
+        st.write(df)
+        predict=model.predict(df)
 
 
 
