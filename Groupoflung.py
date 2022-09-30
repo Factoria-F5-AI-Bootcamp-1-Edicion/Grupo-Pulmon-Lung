@@ -4,15 +4,18 @@ import numpy as np
 from streamlit_option_menu import option_menu
 import joblib
 import pickle 
-
 from pickle import dump
 from pickle import load
 
 
+pickle_in = open('XGBClassifier.pkl', 'rb') 
+classifier = pickle.load(pickle_in)
+pickle_transformer = open('transformer_entrenado.pkl', 'rb') 
+transformer = pickle.load(pickle_transformer)
+
 def main():
     st.title('Stroke Prediction by Team of Lung')
-    filename = 'XGBClassifier.pkl'
-    loaded_model = joblib.load(filename,"rb")
+    
         #Caching the model for faster loading
         # @st.cache
         # def predict(fixed_acidity, volatile_acidity,  citric_acid, residual_Sugar, Free_sulfur_dioxide, Total_sulfur_dioxide, Merry or not, age ):
@@ -86,7 +89,7 @@ def main():
 
     if button:
 
-            risk = loaded_model.predict(input_df)
+            risk = classifier.predict(input_df)
             if risk == 0:
                 st.success("Congratulations! Low Risk of Stroke")
             else:
@@ -131,5 +134,5 @@ def main():
 
 
 
-if __name__ == '__main__':
-    main()
+if __name__=='__main__': 
+    main() 
