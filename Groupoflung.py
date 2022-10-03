@@ -12,9 +12,7 @@ import urllib.request
 def main():
     st.title('Stroke Prediction by Team of Lung')
     
-        #Caching the model for faster loading
-        # @st.cache
-        # def predict(fixed_acidity, volatile_acidity,  citric_acid, residual_Sugar, Free_sulfur_dioxide, Total_sulfur_dioxide, Merry or not, age ):
+        
     col1, col2 = st.columns(2)
     with col1:
             gender = st.selectbox('Gender:', ["Female", "Male"])
@@ -25,9 +23,9 @@ def main():
         
             hypertension = st.selectbox("Hypertension", ["No", "Yes"])
             if hypertension == "No":
-                hypertension = "0"
+                hypertension = 0
             else:
-                hypertension = "1"
+                hypertension = 1
 
             ever_married = st.selectbox("Married", ["No", 'Yes'])
             if ever_married == "No":
@@ -47,9 +45,9 @@ def main():
 
             heart_disease = st.selectbox("Heart Disease", ["No", "Yes"])
             if heart_disease == "No":
-                heart_disease = "0"
+                heart_disease = 0
             else:
-                heart_disease = "1"
+                heart_disease = 1
 
             work_type = st.selectbox("Work Type", ['Private', 'Self-employed', 'Government Job', 'Child', 'Never Worked'])
             if work_type == 'children':
@@ -86,16 +84,16 @@ def main():
 
     if button:
         st.write(input_df)
-        #pickle_transformer = open('transformer_entrenado.pkl', 'rb') 
-        carga_transformer = pickle.load(open('transformer_final.pkl', 'rb'))
-        #pickle_in = open('XGBClassifier.pkl', 'rb') 
-        carga_modelo = pickle.load(open('XGBC.pkl', 'rb'))
+      
+        carga_transformer = pickle.load(open('transformer1.pkl' , 'rb'))
+      
+        carga_modelo = pickle.load(open('XGBC_modelo.pkl', 'rb'))
         transformer = carga_transformer
         modelo = carga_modelo
         df = transformer.transform(input_df)
         st.write(df)
         predict=modelo.predict(df)
-        #print (modelo)
+        
         result = (predict) 
      
         st.success('el resultado de su prueba es:  {}'.format(result))
