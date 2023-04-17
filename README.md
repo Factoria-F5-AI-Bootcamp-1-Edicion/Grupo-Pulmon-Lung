@@ -1,6 +1,10 @@
-# Grupo-Pulmon-Lung
-Grupo Pulmón, Group of Lung 
-Members: Anghi, Rebeca, Mayra, Ana, Chen
+# Grupo-Pulmon-Lung , proyecto para la escuela de IA Factoria F5
+Members: 
+- Ana 
+- Anghi 
+- Rebeca 
+- Mayra
+- Chen
 
 Planteamiento
 
